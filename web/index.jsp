@@ -8,6 +8,8 @@
 <%@page import="java.sql.*, java.io.*"%>   
 <!DOCTYPE html>
 <html>
+    
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="Estilos/index.css">
@@ -26,8 +28,12 @@
 
         <title>COVID-19</title>
     </head>
+    
+    
     <body style="background-color: #e1d5d5">
 
+        
+        <!-- H E A D E R -->
         <div class="header">
             <!-- CONTENEDOR -->
             <div class="container">
@@ -40,8 +46,8 @@
                     <!-- ELEMENTOS DEL NAVEGADOR -->
                     <nav>
                         <ul id="MenuItems">
-                            <li><a class="a-header" href="principal.jsp">INICIO</a></li>
-                            <li><a class="a-header" href="">VACUNACIÓN</a></li>
+                            <li><a class="a-header" href="index.jsp">INICIO</a></li>
+                            <li><a class="a-header" href="Registrados.jsp">VACUNACIÓN</a></li>
                             <li><a class="a-header" href="">TELÉFONOS DE CONTACTO</a></li>
                             <li><form action="cerrarSesion.jsp"><a href="" class="a-header"><i class="fa fa-sign-out"></i>CERRAR SESIÓN</a></form></li>
                         </ul>
@@ -50,38 +56,43 @@
             </div>
         </div>
 
+        
+        <!-- SE COMPRUEBA EL INICIO DE SESIÓN -->
         <%
     Connection conexion = null;
     Statement stament = null;
         %>
         
-        <%HttpSession sesion = request.getSession();
+        <% //HttpSession sesion = request.getSession();
           
-    String correo = request.getParameter("correo");
-    String pass = request.getParameter("pass");
-    ResultSet rs;
-            
-    try{
-        Class.forName("com.mysql.jdbc.Driver");
-        conexion = DriverManager.getConnection("jdbc:mysql://localhost/COVID","gerardo1","n0m3l0"); 
-        String query = "SELECT * FROM Administrador WHERE Correo='" + correo +"' AND Contra='" + pass +"'";              
-        stament = conexion.createStatement();
-        rs = stament.executeQuery(query);
-        if(rs.next()){
-//            out.println("<script>alert('HAZ INICIADO SESION, BIENVENIDO: " + rs.getString("Nombre")  +"')</script>");                   
-        }else{
-            out.println("<script>alert('No se encontraron registros')</script>");
-            response.sendRedirect("index.html");
-            return;
-        }
-    }catch(SQLException error){
-        out.print(error.toString());
-    }catch(Exception e){
-        out.print("Excepcion: "+e);
-    }
+//    String correo = request.getParameter("correo");
+//    String pass = request.getParameter("pass");
+//    ResultSet rs;
+//            
+//    try{
+//        Class.forName("com.mysql.jdbc.Driver");
+//        conexion = DriverManager.getConnection("jdbc:mysql://localhost/COVID","gerardo1","n0m3l0"); 
+//        String query = "SELECT * FROM Administrador WHERE Correo='" + correo +"' AND Contra='" + pass +"'";              
+//        stament = conexion.createStatement();
+//        rs = stament.executeQuery(query);
+//        if(rs.next()){
+////            out.println("<script>alert('HAZ INICIADO SESION, BIENVENIDO: " + rs.getString("Nombre")  +"')</script>");                   
+//        }else{
+//            out.println("<script>alert('No se encontraron registros')</script>");
+//            response.sendRedirect("index.html");
+//            return;
+//        }
+//    }catch(SQLException error){
+//        out.print(error.toString());
+//    }catch(Exception e){
+//        out.print("Excepcion: "+e);
+//    }
         %> 
         
 
+        
+        <!-- TARJETA CON NÚMERO DE CASOS -->
+        
         <br><br><br>
         <div class="container">
             <div class="card" style="width:400px; float: left">
@@ -91,7 +102,7 @@
                         <%
                             ResultSet rse;
                             try {
-                    conexion = DriverManager.getConnection("jdbc:mysql://localhost/COVID", "gerardo1", "n0m3l0");
+                    conexion = DriverManager.getConnection("jdbc:mysql://192.168.100.125/COVID", "wbench", "wbench");
                     String query = "SELECT count(Identificador) FROM ComunidadPositivo";
                     String query2 = "SELECT count(Identificador) FROM ComunidadPositivo WHERE Revisado = '" + "No" + "'";
                     String query3 = "SELECT count(Identificador) FROM ComunidadPositivo WHERE Revisado = '" + "Si" + "'";
@@ -123,6 +134,9 @@
                     </div>
                 </div>
             </div>
+                    
+                    <!-- GRÁFICA -->        
+                    
             <div class="grafica" style="width:600px; float: left; margin-left: 100px;">
                 <div style="float: left; margin-left: 200px;">
                     <button style="color: #fff; background-color: darkblue" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Mes

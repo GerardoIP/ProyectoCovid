@@ -61,7 +61,7 @@
                     
                     try{
                 Class.forName("com.mysql.jdbc.Driver");
-                conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/COVID","gerardo1","n0m3l0"); 
+                conexion = DriverManager.getConnection("jdbc:mysql://192.168.100.125/COVID", "wbench", "wbench"); 
                 String query = "SELECT * FROM ComunidadInteraccion WHERE Identificador='" + id +"'";              
                 stament = conexion.createStatement();
                 rs = stament.executeQuery(query);
@@ -89,7 +89,7 @@
             <%
                     try{
                 Class.forName("com.mysql.jdbc.Driver");
-                conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/COVID","gerardo1","n0m3l0"); 
+                conexion = DriverManager.getConnection("jdbc:mysql://192.168.100.125/COVID", "wbench", "wbench"); 
                 String query = "SELECT * FROM ContactoAvisar WHERE IdentificadorRelacion='" + id +"'";              
                 stament = conexion.createStatement();
                 rs = stament.executeQuery(query);

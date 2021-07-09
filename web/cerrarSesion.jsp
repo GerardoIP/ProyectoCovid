@@ -15,7 +15,7 @@
         <% HttpSession sesion = request.getSession();
         if(sesion!=null){
             sesion.invalidate();
-            out.print("<META HTTP-EQUIV='REFRESH' CONTENT='0.0000001; URL=http://localhost/Propuesta6COVID_Bootstrap/index.html'/>");
+            out.print("<META HTTP-EQUIV='REFRESH' CONTENT='0.0000001; URL=http://localhost/COVID7/index.jsp'/>");
         }
         %>
     </body>

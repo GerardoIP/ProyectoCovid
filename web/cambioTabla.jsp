@@ -27,7 +27,7 @@
             Date date = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             ResultSet rs = null;
-            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/COVID", "gerardo1", "n0m3l0");
+            Connection conexion = DriverManager.getConnection("jdbc:mysql://192.168.100.125/COVID", "wbench", "wbench");
             Statement comando = conexion.createStatement();
             comando.executeUpdate("UPDATE ComunidadPositivo SET Revisado = '" + "Si" + "', Fecha_Revisado = '" + dateFormat.format(date) + "' WHERE Revisado = 'No'"
             + "AND Identificador='" + id + "';");

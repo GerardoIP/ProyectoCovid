@@ -67,7 +67,7 @@
                     try
                     {
                         Class.forName("com.mysql.jdbc.Driver");
-                        c = DriverManager.getConnection("jdbc:mysql://localhost/COVID", "gerardo1", "n0m3l0"); 
+                        c = DriverManager.getConnection("jdbc:mysql://192.168.100.125/COVID", "wbench", "wbench"); 
                         s = c.createStatement();
                         
                     }
